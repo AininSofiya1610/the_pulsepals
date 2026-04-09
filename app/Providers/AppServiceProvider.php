@@ -20,6 +20,8 @@ class AppServiceProvider extends ServiceProvider
     {
         Paginator::useBootstrapFive();
 
+	Schema::defaultStringLength(191);
+
         // Share counts with sidebar - with safety checks
         View::composer('layouts.sidebar', function ($view) {
             try {
