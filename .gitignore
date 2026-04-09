@@ -34,3 +34,20 @@ debug_vendor_soff.php
 seed_test_vendors.php
 temp_invoice_edit.txt
 vibecoding_prompt.md
+
+
+# Cache files
+/storage/framework/views/
+/storage/framework/cache/
+/storage/framework/sessions/
+
+# Debug & temp files
+check_invoices.php
+check_queue.php
+check_vendor.php
+debug_overdue.php
+debug_vendor_soff.php
+seed_test_vendors.php
+temp_invoice_edit.txt
+vibecoding_prompt.md
+git_files.txt
