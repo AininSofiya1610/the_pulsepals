@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <style>
+        body { font-family: Arial, sans-serif; background: #f4f4f4; margin: 0; padding: 0; }
+        .container { max-width: 600px; margin: 30px auto; background: #fff; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+        .header { background: #f6c23e; padding: 30px; text-align: center; }
+        .header h1 { color: #fff; margin: 0; font-size: 24px; }
+        .header p { color: rgba(255,255,255,0.9); margin: 5px 0 0; }
+        .body { padding: 30px; }
+        .alert-box { background: #fdf8ec; border-left: 4px solid #f6c23e; padding: 15px 20px; border-radius: 4px; margin-bottom: 25px; }
+        .alert-box p { margin: 0; color: #b7890a; font-weight: bold; }
+        table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+        table th { background: #f8f9fc; text-align: left; padding: 10px 14px; font-size: 13px; color: #6e707e; border-bottom: 2px solid #e3e6f0; }
+        table td { padding: 10px 14px; font-size: 14px; border-bottom: 1px solid #f0f0f0; color: #3a3b45; }
+        .amount { font-size: 28px; font-weight: bold; color: #f6c23e; text-align: center; margin: 20px 0; }
+        .label { font-size: 12px; color: #858796; text-align: center; }
+        .days-badge { display: inline-block; background: #f6c23e; color: #fff; padding: 4px 12px; border-radius: 20px; font-size: 13px; }
+        .footer { background: #f8f9fc; padding: 20px; text-align: center; font-size: 12px; color: #858796; border-top: 1px solid #e3e6f0; }
+        .btn { display: inline-block; background: #f6c23e; color: #fff; padding: 12px 30px; border-radius: 5px; text-decoration: none; font-weight: bold; margin: 20px 0; }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <h1>🔔 Payment Reminder</h1>
+        <p>{{ $type === 'customer' ? 'Customer Finance' : 'Vendor Finance' }}</p>
+    </div>
+    <div class="body">
+        <div class="alert-box">
+            <p>Invoice berikut akan mencapai due date dalam masa 3 hari.</p>
+        </div>
+        <p style="color:#3a3b45;">Hi <strong>{{ $admin->name }}</strong>,</p>
+        <p style="color:#858796; font-size:14px;">
+            {{ $type === 'customer' ? 'Invoice daripada customer' : 'Invoice kepada vendor' }}
+            berikut akan due pada
+            <span class="days-badge">{{ \Carbon\Carbon::parse($invoice->due_date)->format('d M Y') }}</span>.
+        </p>
+        <table>
+            <tr><th>Invoice No</th><td><strong>{{ $invoice->invoice_no }}</strong></td></tr>
+            <tr>
+                <th>{{ $type === 'customer' ? 'Customer' : 'Vendor' }} Name</th>
+                <td>{{ $type === 'customer' ? $invoice->customer_name : $invoice->vendor_name }}</td>
+            </tr>
+            <tr><th>Invoice Date</th><td>{{ \Carbon\Carbon::parse($invoice->invoice_date)->format('d M Y') }}</td></tr>
+            <tr>
+                <th>Due Date</th>
+                <td style="color:#e67e22; font-weight:bold;">
+                    {{ \Carbon\Carbon::parse($invoice->due_date)->format('d M Y') }} &nbsp;<small>(3 hari lagi)</small>
+                </td>
+            </tr>
+            <tr><th>Invoice Amount</th><td>RM {{ number_format($invoice->amount, 2) }}</td></tr>
+            <tr><th>Amount Paid</th><td>RM {{ number_format($invoice->amount - $balance, 2) }}</td></tr>
+        </table>
+        <div class="amount">RM {{ number_format($balance, 2) }}</div>
+        <div class="label">OUTSTANDING BALANCE</div>
+        <div style="text-align:center;">
+            <a href="{{ config('app.url') }}/{{ $type === 'customer' ? 'customers' : 'vendors' }}/finance" class="btn">View Invoice</a>
+        </div>
+    </div>
+    <div class="footer">
+        <p>{{ config('app.name') }} &mdash; Automated Finance Notification</p>
+        <p>Email ini dihantar secara automatik. Sila jangan reply.</p>
+    </div>
+</div>
+</body>
+</html>

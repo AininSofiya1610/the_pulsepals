@@ -1,0 +1,32 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration
+{
+    /**
+     * Run the migrations.
+     */
+    public function up(): void
+    {
+        Schema::table('vendor_finances', function (Blueprint $table) {
+            if (!Schema::hasColumn('vendor_finances', 'paid_amount')) {
+                $table->decimal('paid_amount', 15, 2)->default(0)->after('invoice');
+            }
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     */
+    public function down(): void
+    {
+        Schema::table('vendor_finances', function (Blueprint $table) {
+            if (Schema::hasColumn('vendor_finances', 'paid_amount')) {
+                $table->dropColumn('paid_amount');
+            }
+        });
+    }
+};

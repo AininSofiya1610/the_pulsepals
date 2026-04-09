@@ -1,0 +1,528 @@
+/*
+ * shadcn-inspired Design System for Laravel Blade + Bootstrap
+ * A clean, neutral color palette with modern styling
+ */
+
+/* =========================================
+   CSS Variables (Design Tokens)
+   ========================================= */
+:root {
+    /* Neutral Colors (Slate palette) */
+    --slate-50: #f8fafc;
+    --slate-100: #f1f5f9;
+    --slate-200: #e2e8f0;
+    --slate-300: #cbd5e1;
+    --slate-400: #94a3b8;
+    --slate-500: #64748b;
+    --slate-600: #475569;
+    --slate-700: #334155;
+    --slate-800: #1e293b;
+    --slate-900: #0f172a;
+
+    /* Primary Color */
+    --primary: #18181b;
+    --primary-foreground: #fafafa;
+
+    /* Semantic Colors */
+    --success: #22c55e;
+    --success-bg: #dcfce7;
+    --warning: #f59e0b;
+    --warning-bg: #fef3c7;
+    --danger: #ef4444;
+    --danger-bg: #fee2e2;
+    --info: #3b82f6;
+    --info-bg: #dbeafe;
+
+    /* Layout */
+    --border-color: #e4e4e7;
+    --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+    --shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+    --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+    --radius: 0.5rem;
+    --radius-lg: 0.75rem;
+    --radius-sm: 0.375rem;
+}
+
+/* =========================================
+   Base Typography
+   ========================================= */
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    color: var(--slate-700);
+    background-color: #f4f4f5 !important;
+    /* zinc-100 - more visible gray */
+}
+
+/* Override SB Admin content wrapper background */
+#content-wrapper {
+    background-color: #f4f4f5 !important;
+}
+
+/* =========================================
+   Cards
+   ========================================= */
+.shad-card {
+    background: #ffffff;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+}
+
+.shad-card-header {
+    padding: 1.25rem 1.5rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.shad-card-title {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--slate-900);
+    margin: 0;
+}
+
+.shad-card-description {
+    font-size: 0.875rem;
+    color: var(--slate-500);
+    margin: 0.25rem 0 0 0;
+}
+
+.shad-card-body {
+    padding: 1.5rem;
+}
+
+.shad-card-footer {
+    padding: 1rem 1.5rem;
+    border-top: 1px solid var(--border-color);
+    background: var(--slate-50);
+    border-radius: 0 0 var(--radius-lg) var(--radius-lg);
+}
+
+/* =========================================
+   Stat Cards
+   ========================================= */
+.shad-stat-card {
+    background: #ffffff;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    padding: 1.25rem;
+    transition: box-shadow 0.2s ease;
+}
+
+.shad-stat-card:hover {
+    box-shadow: var(--shadow-md);
+}
+
+.shad-stat-label {
+    font-size: 0.8125rem;
+    font-weight: 500;
+    color: #000000 !important;
+    /* Pure black for all stat labels */
+    margin: 0;
+    text-transform: uppercase;
+    letter-spacing: 0.025em;
+}
+
+.shad-stat-value {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--slate-900);
+    margin: 0.25rem 0 0 0;
+    line-height: 1.2;
+}
+
+.shad-stat-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: var(--radius);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+}
+
+.shad-stat-icon.primary {
+    background: var(--slate-100);
+    color: var(--slate-600);
+}
+
+.shad-stat-icon.success {
+    background: var(--success-bg);
+    color: var(--success);
+}
+
+.shad-stat-icon.warning {
+    background: var(--warning-bg);
+    color: var(--warning);
+}
+
+.shad-stat-icon.danger {
+    background: var(--danger-bg);
+    color: var(--danger);
+}
+
+.shad-stat-icon.info {
+    background: var(--info-bg);
+    color: var(--info);
+}
+
+/* =========================================
+   Buttons
+   ========================================= */
+.shad-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+    border-radius: var(--radius-sm);
+    border: none;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+.shad-btn:hover {
+    text-decoration: none;
+}
+
+.shad-btn-primary {
+    background: var(--primary);
+    color: var(--primary-foreground);
+}
+
+.shad-btn-primary:hover {
+    background: var(--slate-800);
+    color: var(--primary-foreground);
+}
+
+.shad-btn-secondary {
+    background: #ffffff;
+    color: var(--slate-700);
+    border: 1px solid var(--border-color);
+}
+
+.shad-btn-secondary:hover {
+    background: var(--slate-50);
+    color: var(--slate-900);
+}
+
+.shad-btn-ghost {
+    background: transparent;
+    color: var(--slate-600);
+}
+
+.shad-btn-ghost:hover {
+    background: var(--slate-100);
+    color: var(--slate-900);
+}
+
+.shad-btn-sm {
+    padding: 0.375rem 0.75rem;
+    font-size: 0.8125rem;
+}
+
+.shad-btn-icon {
+    padding: 0.5rem;
+    width: 2rem;
+    height: 2rem;
+}
+
+.shad-btn-icon.sm {
+    width: 1.75rem;
+    height: 1.75rem;
+    padding: 0;
+}
+
+/* =========================================
+   Tables
+   ========================================= */
+.shad-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.shad-table thead th {
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--slate-500);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid var(--border-color);
+    background: var(--slate-50);
+    text-align: left;
+}
+
+.shad-table tbody td {
+    padding: 0.875rem 1rem;
+    border-bottom: 1px solid var(--border-color);
+    font-size: 0.875rem;
+    color: var(--slate-600);
+}
+
+.shad-table tbody tr:hover {
+    background: var(--slate-50);
+}
+
+.shad-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+/* =========================================
+   Badges
+   ========================================= */
+.shad-badge {
+    display: inline-flex;
+    align-items: center;
+    font-size: 0.75rem;
+    font-weight: 500;
+    padding: 0.25rem 0.625rem;
+    border-radius: 9999px;
+    white-space: nowrap;
+}
+
+.shad-badge-default {
+    background: var(--slate-100);
+    color: var(--slate-700);
+}
+
+.shad-badge-success {
+    background: var(--success-bg);
+    color: #15803d;
+}
+
+.shad-badge-warning {
+    background: var(--warning-bg);
+    color: #b45309;
+}
+
+.shad-badge-danger {
+    background: var(--danger-bg);
+    color: #dc2626;
+}
+
+.shad-badge-info {
+    background: var(--info-bg);
+    color: #1d4ed8;
+}
+
+/* =========================================
+   Form Controls
+   ========================================= */
+.shad-input,
+.shad-select {
+    display: block;
+    width: 100%;
+    padding: 0.5rem 0.75rem;
+    font-size: 0.875rem;
+    color: var(--slate-900);
+    background: #ffffff;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-sm);
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.shad-input:focus,
+.shad-select:focus {
+    outline: none;
+    border-color: var(--slate-400);
+    box-shadow: 0 0 0 2px rgba(148, 163, 184, 0.2);
+}
+
+.shad-input::placeholder {
+    color: var(--slate-400);
+}
+
+.shad-label {
+    display: block;
+    font-size: 0.8125rem;
+    font-weight: 500;
+    color: var(--slate-700);
+    margin-bottom: 0.375rem;
+}
+
+/* =========================================
+   Modals
+   ========================================= */
+.shad-modal .modal-content {
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+}
+
+.shad-modal .modal-header {
+    padding: 1.25rem 1.5rem;
+    border-bottom: 1px solid var(--border-color);
+    background: #ffffff;
+    border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+}
+
+.shad-modal .modal-header .modal-title {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: var(--slate-900);
+}
+
+.shad-modal .modal-header .close {
+    padding: 0.5rem;
+    margin: -0.5rem -0.5rem -0.5rem auto;
+    background: transparent;
+    border: none;
+    opacity: 0.5;
+    font-size: 1rem;
+    color: var(--slate-500);
+}
+
+.shad-modal .modal-header .close:hover {
+    opacity: 1;
+}
+
+.shad-modal .modal-body {
+    padding: 1.5rem;
+}
+
+.shad-modal .modal-footer {
+    padding: 1rem 1.5rem;
+    border-top: 1px solid var(--border-color);
+    background: var(--slate-50);
+    border-radius: 0 0 var(--radius-lg) var(--radius-lg);
+    gap: 0.5rem;
+}
+
+/* =========================================
+   Alerts
+   ========================================= */
+.shad-alert {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    padding: 1rem;
+    border-radius: var(--radius);
+    font-size: 0.875rem;
+}
+
+.shad-alert-success {
+    background: var(--success-bg);
+    border: 1px solid #bbf7d0;
+    color: #15803d;
+}
+
+.shad-alert-warning {
+    background: var(--warning-bg);
+    border: 1px solid #fde68a;
+    color: #b45309;
+}
+
+.shad-alert-danger {
+    background: var(--danger-bg);
+    border: 1px solid #fecaca;
+    color: #dc2626;
+}
+
+.shad-alert-info {
+    background: var(--info-bg);
+    border: 1px solid #bfdbfe;
+    color: #1d4ed8;
+}
+
+/* =========================================
+   Page Header
+   ========================================= */
+.shad-page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.shad-page-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--slate-900);
+    margin: 0;
+    letter-spacing: -0.025em;
+}
+
+.shad-page-description {
+    font-size: 0.875rem;
+    color: var(--slate-500);
+    margin: 0.25rem 0 0 0;
+}
+
+/* =========================================
+   Empty States
+   ========================================= */
+.shad-empty {
+    text-align: center;
+    padding: 3rem 1.5rem;
+}
+
+.shad-empty-icon {
+    color: var(--slate-300);
+    margin-bottom: 1rem;
+}
+
+.shad-empty-title {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--slate-700);
+    margin: 0;
+}
+
+.shad-empty-description {
+    font-size: 0.875rem;
+    color: var(--slate-500);
+    margin: 0.5rem 0 0 0;
+}
+
+/* =========================================
+   Actions Container
+   ========================================= */
+.shad-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+/* =========================================
+   Utility: Gap
+   ========================================= */
+.gap-2 {
+    gap: 0.5rem;
+}
+
+.gap-3 {
+    gap: 0.75rem;
+}
+
+/* =========================================
+   Pagination Override
+   ========================================= */
+.shad-pagination .pagination {
+    margin: 0;
+    gap: 0.25rem;
+}
+
+.shad-pagination .page-link {
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--border-color);
+    color: var(--slate-600);
+    font-size: 0.875rem;
+    padding: 0.375rem 0.75rem;
+}
+
+.shad-pagination .page-link:hover {
+    background: var(--slate-50);
+    border-color: var(--slate-300);
+}
+
+.shad-pagination .page-item.active .page-link {
+    background: var(--primary);
+    border-color: var(--primary);
+    color: var(--primary-foreground);
+}
